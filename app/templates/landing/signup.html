@@ -1,0 +1,41 @@
+{% extends "landing/index.html" %}
+{% block content %}
+<h1>Register</h1>
+<form action="" method='POST'>
+    {% csrf_token %}
+    <h3><strong>Signup Form</strong></h3>
+
+    
+    {% for field in form  %}
+
+    
+    {% if field.errors %}
+
+    <div class="mb-3">
+        <label class="form-label">{{field.label}}</label>
+        {{field}}
+        <small>{{field.errors}}</small>
+    </div>
+
+    {% else %}
+
+    <div class="mb-3">
+        <label class="form-label">{{field.label}}</label>
+        {{field}}
+    </div>
+
+        
+    {% endif %}
+        
+
+    
+        
+    {% endfor %}
+        
+
+
+      <button class="btn btn-primary" style="width:100%">Register</button>
+      <p>Already have an account? <a href="{% url 'signin' %}">Login</a></p>
+
+</form>
+{% endblock %}
