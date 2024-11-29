@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Creator</title>
+    <link rel="icon" type="image/x-icon" href="">
+<link rel="stylesheet" href="{% static 'landing/index.css' %}">
+</head>
+<body>
+    <nav>
+        Logo
+
+        <ol>
+            <a href="{% url 'index' %}"><li>Home</li></a>
+            <a href="about/"><li>About</li></a>
+            
+            <li>Sign Up / Login</li>
+        </ol>
+    </nav>
+    {% block content %}
+    <h1>WELCOME TO PORTFOLIO - MANAGER</h1>
+    <h4>Create your ideal portfolio in minutes with our custom portfolio creator, designed for Designers, Creators, and Developers to showcase their work their way.</h4>
+    <button>Get started</button>
+    {% endblock %}
+
+    <nav>
+        Footer
+    </nav>
+</body>
+</html>
