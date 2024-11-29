@@ -15,10 +15,24 @@
         <ol>
             <a href="{% url 'index' %}"><li>Home</li></a>
             <a href="about/"><li>About</li></a>
+            <a href="{% url 'signin' %}"><li>signin</li></a>
+            <a href="{% url 'register' %}"><li>register</li></a>
             
-            <li>Sign Up / Login</li>
+            
         </ol>
     </nav>
+    <br>
+    {% for message in messages %}  
+
+    <div class="alert alert-{{message.tags}}" role="alert" style="margin-top: 30px">
+      <h5>{{message}}</h5>
+    
+    </div>
+    {% endfor %}
+
+    <br>
+
+
     {% block content %}
     <h1>WELCOME TO PORTFOLIO - MANAGER</h1>
     <h4>Create your ideal portfolio in minutes with our custom portfolio creator, designed for Designers, Creators, and Developers to showcase their work their way.</h4>
