@@ -69,6 +69,7 @@ def resend_otp(request):
             
             # email variables
             subject="Email Verification"
+            
             message = f"""
                                 Hi {user.username}, here is your OTP {otp.otp_code} 
                                 it expires in 5 minute, use the url below to redirect back to the website
@@ -100,10 +101,14 @@ def resend_otp(request):
     return render(request, "landing/resend_otp.html", context)
 
 
-
+def customlogout(request):
+    logout(request)
+    messages.success(request, "You have been logged out successfully.")
+    return redirect('signin')
 
 def signin(request):
     if request.method == 'POST':
+        
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
@@ -111,10 +116,16 @@ def signin(request):
         if user is not None:    
             login(request, user)
             messages.success(request, f"Hi {request.user.username}, you are now logged-in")
-            return redirect("index")
+            return redirect("home")
         
         else:
             messages.warning(request, "Invalid credentials")
-            return redirect("signin")
-        
+            return redirect("home")
+      
     return render(request, "landing/login.html")
+
+
+
+
+def home(request):
+    return render(request,'home/index.html')
