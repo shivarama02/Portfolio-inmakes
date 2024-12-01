@@ -11,7 +11,7 @@ from django.utils import timezone
 def create_token(sender, instance, created, **kwargs):
     if created:
         if instance.is_superuser:
-            pass
+            return 
         
         else:
             OtpToken.objects.create(user=instance, otp_expires_at=timezone.now() + timezone.timedelta(minutes=5))
